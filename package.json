@@ -1,0 +1,19 @@
+{
+  "name": "utilitiesjs",
+  "version": "0.1.0",
+  "description": "Utility functions for front-end JavaScript development.",
+  "main": "utilities.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/theZieger/utilities.git"
+  },
+  "author": "thezieger",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/theZieger/utilities/issues"
+  },
+  "homepage": "https://github.com/theZieger/utilities#readme"
+}
