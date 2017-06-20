@@ -48,3 +48,58 @@ DoTheFlop.prototype.flop = function() {
 }
 
 ```
+
+### utilities.toObject(arr, mapBy)
+
+The `mapBy` argument is therefore totally optional.
+
+This function was created because I, as a front-end developer, have to handle a lot of data from API responses. And when I say a lot, I mean a lot.
+Sometimes more than 2000 objects inside an array with countless attributes hit our clients and I have to enrich them with even more data from different API requests.
+You can imagine looping over those 2000 objects can be tough for the clients device. So I map these array of objects to an associative object which can be accessed a lot faster by simply doing a member access by the hotels ID.
+A lot faster and way more performant. That's the story how this function landed inside this repo. For me it's quite handy.
+
+
+Anyway. Here is a code example how to use the `utilities.toObject` function:
+
+```
+// make sure utilities.js is already available when this code runs
+
+var states = ['Sachsen', 'Sachsen-Anhalt', 'Berlin', 'Hamburg'];
+var statesObject = utilities.toObject(states);
+
+console.log(statesObject);
+
+// results in a not very impressive object with key names representing the array indexes:
+// {0: 'Sachsen', 1: 'Sachsen-Anhalt', 2: 'Berlin', 3: 'Hamburg'}
+
+
+// maybe a way better example
+// with some of the punniest headlines ever
+
+var news = [
+    {
+        id: 12001
+        headline: 'Tiger goes limp',
+        subHeadline: 'Pulls out after 9 holes'
+    },{
+        id: 666
+        headline: 'Croc has beef with cow',
+        subHeadline: ''
+    },{
+        id: 1337
+        headline: 'Germans wurst at penalties',
+        subHeadline: 'New stats prove England are better from the spot'
+    }
+];
+var newsObject = utilities.toObject(news, 'id');
+
+console.log(statesObject);
+
+// results in:
+// {
+//     12001: { id: 12001, headline: 'Tiger goes limp', subHeadline: 'Pulls out after 9 holes' },
+//     666: { id: 666, headline: 'Croc has beef with cow', subHeadline: '' },
+//     1337: { id: 1337, headline: 'Germans wurst at penalties', subHeadline: 'New stats prove England are better from the spot' }
+// }
+
+```
