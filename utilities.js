@@ -10,6 +10,8 @@ var utilities = (function(undefined) {
      * @param   {[type]} proto [description]
      *
      * @returns {[type]}       [description]
+     *
+     * @todo test the inherits function inside Internet Explorer
      */
     Object.setPrototypeOf = Object.setPrototypeOf || function(obj, proto) {
         obj.__proto__ = proto;
@@ -22,7 +24,7 @@ var utilities = (function(undefined) {
      * @param   {Object} constructor
      * @param   {Object} superConstructor
      *
-     * @returns {void}
+     * @returns {Void}
      */
     var inherits = function(constructor, superConstructor) {
         if (constructor === undefined || constructor === null) {
@@ -48,7 +50,7 @@ var utilities = (function(undefined) {
      * @param {Array}  arr
      * @param {String} mapBy  optional mapping key
      *
-     * @returns object
+     * @returns {Object}
      */
     var toObject = function(arr, mapBy) {
         var obj = {};
