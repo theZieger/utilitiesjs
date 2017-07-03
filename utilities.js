@@ -4,44 +4,40 @@
 var utilities = (function(undefined) {
 
     /**
-     * POLYFILLING Object.setPrototypeOf if not available
+     * inherit the prototype of the SuperConstructor
+     * 
+     * Warning: Changing the prototype of an object is, by the nature of how modern JavaScript engines
+     * optimize property accesses, a very slow operation, in every browser and JavaScript engine.
+     * So instead of using Object.setPrototypeOf or messing with __proto__, we create a new object
+     * with the desired prototype using Object.create().
      *
-     * @param   {[type]} obj   [description]
-     * @param   {[type]} proto [description]
+     * @see https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
      *
-     * @returns {[type]}       [description]
+     * @param {Object} Constructor
+     * @param {Object} SuperConstructor
      *
-     * @todo test the inherits function inside Internet Explorer
-     */
-    Object.setPrototypeOf = Object.setPrototypeOf || function(obj, proto) {
-        obj.__proto__ = proto;
-        return obj;
-    };
-
-    /**
-     * inherit the prototype of the superConstructor
-     *
-     * @param   {Object} constructor
-     * @param   {Object} superConstructor
+     * @throws {Error} will error if either Constructor is null, or SuperConstructor has no prototype
      *
      * @returns {Void}
      */
-    var inherits = function(constructor, superConstructor) {
-        if (constructor === undefined || constructor === null) {
+    var inherits = function(Constructor, SuperConstructor) {
+        if (Constructor === undefined || Constructor === null) {
             throw new Error('ERR_INVALID_ARG_TYPE');
         }
 
-        if (superConstructor === undefined || superConstructor === null) {
+        if (SuperConstructor === undefined || SuperConstructor === null) {
             throw new Error('ERR_INVALID_ARG_TYPE');
         }
 
-        if (superConstructor.prototype === undefined) {
+        if (SuperConstructor.prototype === undefined) {
             throw new Error('ERR_INVALID_ARG_TYPE');
         }
 
-        constructor.super_ = superConstructor;
+        // for convenience, SuperConstructor will be accessible through the Constructor.super_ property
+        Constructor.super_ = SuperConstructor;
 
-        Object.setPrototypeOf(constructor.prototype, superConstructor.prototype);
+        Constructor.prototype = Object.create(SuperConstructor.prototype);
+        Constructor.prototype.constructor = Constructor;
     };
 
     /**
