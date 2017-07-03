@@ -1,6 +1,6 @@
 {
   "name": "utilitiesjs",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Utility functions for front-end JavaScript development.",
   "main": "utilities.js",
   "scripts": {

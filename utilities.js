@@ -4,44 +4,40 @@
 var utilities = (function(undefined) {
 
     /**
-     * POLYFILLING Object.setPrototypeOf if not available
+     * inherit the prototype of the SuperConstructor
+     * 
+     * Warning: Changing the prototype of an object is, by the nature of how modern JavaScript engines
+     * optimize property accesses, a very slow operation, in every browser and JavaScript engine.
+     * So instead of using Object.setPrototypeOf or messing with __proto__, we create a new object
+     * with the desired prototype using Object.create().
      *
-     * @param   {[type]} obj   [description]
-     * @param   {[type]} proto [description]
+     * @see https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf
      *
-     * @returns {[type]}       [description]
+     * @param {Object} Constructor
+     * @param {Object} SuperConstructor
      *
-     * @todo test the inherits function inside Internet Explorer
-     */
-    Object.setPrototypeOf = Object.setPrototypeOf || function(obj, proto) {
-        obj.__proto__ = proto;
-        return obj;
-    };
-
-    /**
-     * inherit the prototype of the superConstructor
-     *
-     * @param   {Object} constructor
-     * @param   {Object} superConstructor
+     * @throws {TypeError} if arguments are null/undefined, or SuperConstructor has no prototype
      *
      * @returns {Void}
      */
-    var inherits = function(constructor, superConstructor) {
-        if (constructor === undefined || constructor === null) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+    var inherits = function(Constructor, SuperConstructor) {
+        if (Constructor === undefined || Constructor === null) {
+            throw new TypeError('Constructor argument is undefined or null');
         }
 
-        if (superConstructor === undefined || superConstructor === null) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+        if (SuperConstructor === undefined || SuperConstructor === null) {
+            throw new TypeError('SuperConstructor argument is undefined or null');
         }
 
-        if (superConstructor.prototype === undefined) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+        if (SuperConstructor.prototype === undefined) {
+            throw new TypeError('SuperConstructor.prototype is undefined');
         }
 
-        constructor.super_ = superConstructor;
+        // for convenience, SuperConstructor will be accessible through the Constructor.super_ property
+        Constructor.super_ = SuperConstructor;
 
-        Object.setPrototypeOf(constructor.prototype, superConstructor.prototype);
+        Constructor.prototype = Object.create(SuperConstructor.prototype);
+        Constructor.prototype.constructor = Constructor;
     };
 
     /**
@@ -50,17 +46,19 @@ var utilities = (function(undefined) {
      * @param {Array}  arr
      * @param {String} mapBy  optional mapping key
      *
+     * @throws {TypeError} if arr is not an Array or mapBy is set but not a String
+     *
      * @returns {Object}
      */
     var toObject = function(arr, mapBy) {
         var obj = {};
 
         if (typeof mapBy !== 'string' && mapBy != null) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('mapBy argument is not of type String');
         }
       
         if (!Array.isArray(arr)) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('arr argument is not of type Array');
         }
 
         arr.forEach(function(val, i) {

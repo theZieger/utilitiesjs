@@ -1,4 +1,4 @@
-# utilities v0.2.0
+# utilities v0.3.0
 
 > Utility functions for front-end JavaScript development.
 
@@ -18,7 +18,9 @@ Once the module has been installed, you may integrate that file into your build 
 
 ### utilities.inherits(constructor, superConstructor)
 
-This is the same function as NodeJS provides it inside their core modules. The only thing different between this `inherits` and the Node `inherits` function is that I provide a polyfill for `Object.setPrototypeof`. Which is, at the moment, very crude and will possibly fail when using inside Internet Explorer.
+Inherit the prototype from one constructor into another. The prototype of Constructor will be set to a new object created from SuperConstructor.
+
+It does not make use of Object.setPrototype since it's usage is to be avoided following the [MDN warning about Object.setPrototypeOf](https://developer.mozilla.org/de/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf) and instead uses Object.create to also fullfill support for older browsers.
 
 Anyway. Here is a code example how to use the `utilities.inherits` function:
 
@@ -51,13 +53,14 @@ DoTheFlop.prototype.flop = function() {
 
 ### utilities.toObject(arr, mapBy)
 
+Turns an array of values into a object.
+
 The `mapBy` argument is therefore totally optional.
 
 This function was created because I, as a front-end developer, have to handle a lot of data from API responses. And when I say a lot, I mean a lot.
 Sometimes more than 2000 objects inside an array with countless attributes hit our clients and I have to enrich them with even more data from different API requests.
-You can imagine looping over those 2000 objects can be tough for the clients device. So I map these array of objects to an associative object which can be accessed a lot faster by simply doing a member access by the hotels ID.
+You can imagine looping over those 2000 objects can be tough for the clients device. So I map these array of objects to an associative object which can be accessed a lot faster by simply doing a member access by the ID.
 A lot faster and way more performant. That's the story how this function landed inside this repo. For me it's quite handy.
-
 
 Anyway. Here is a code example how to use the `utilities.toObject` function:
 
