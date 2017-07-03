@@ -16,21 +16,21 @@ var utilities = (function(undefined) {
      * @param {Object} Constructor
      * @param {Object} SuperConstructor
      *
-     * @throws {Error} will error if either Constructor is null, or SuperConstructor has no prototype
+     * @throws {TypeError} if arguments are null/undefined, or SuperConstructor has no prototype
      *
      * @returns {Void}
      */
     var inherits = function(Constructor, SuperConstructor) {
         if (Constructor === undefined || Constructor === null) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('Constructor argument is undefined or null');
         }
 
         if (SuperConstructor === undefined || SuperConstructor === null) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('SuperConstructor argument is undefined or null');
         }
 
         if (SuperConstructor.prototype === undefined) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('SuperConstructor.prototype is undefined');
         }
 
         // for convenience, SuperConstructor will be accessible through the Constructor.super_ property
@@ -46,17 +46,19 @@ var utilities = (function(undefined) {
      * @param {Array}  arr
      * @param {String} mapBy  optional mapping key
      *
+     * @throws {TypeError} if arr is not an Array or mapBy is set but not a String
+     *
      * @returns {Object}
      */
     var toObject = function(arr, mapBy) {
         var obj = {};
 
         if (typeof mapBy !== 'string' && mapBy != null) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('mapBy argument is not of type String');
         }
       
         if (!Array.isArray(arr)) {
-            throw new Error('ERR_INVALID_ARG_TYPE');
+            throw new TypeError('arr argument is not of type Array');
         }
 
         arr.forEach(function(val, i) {
