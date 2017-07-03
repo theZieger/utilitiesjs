@@ -1,4 +1,4 @@
-# utilities v0.2.0
+# utilities v0.3.0
 
 > Utility functions for front-end JavaScript development.
 
