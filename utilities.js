@@ -1,7 +1,15 @@
 /**
- * Utility funtions for front-end JavaScript development
+ * Utility functions for front-end JavaScript development
  */
-var utilities = (function(undefined) {
+(function(root, factory) {
+    if (typeof define === "function" && define.amd) {
+        define(["utilities"], factory);
+    } else if (typeof module === "object" && module.exports) {
+        module.exports = factory();
+    } else {
+        root.utilities = factory();
+    }
+}(this, function(undefined) {
 
     /**
      * inherit the prototype of the SuperConstructor
@@ -79,5 +87,4 @@ var utilities = (function(undefined) {
         inherits: inherits,
         toObject: toObject
     };
-
-}());
+}));
