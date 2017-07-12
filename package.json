@@ -8,12 +8,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/theZieger/utilities.git"
+    "url": "git+https://github.com/theZieger/utilitiesjs.git"
   },
   "author": "thezieger",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/theZieger/utilities/issues"
+    "url": "https://github.com/theZieger/utilitiesjs/issues"
   },
-  "homepage": "https://github.com/theZieger/utilities#readme"
+  "homepage": "https://github.com/theZieger/utilitiesjs#readme"
 }
