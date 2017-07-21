@@ -96,7 +96,7 @@ var news = [
 ];
 var newsObject = utilities.toObject(news, 'id');
 
-console.log(statesObject);
+console.log(newsObject);
 
 // results in:
 // {
