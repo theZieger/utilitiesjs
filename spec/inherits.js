@@ -1,8 +1,7 @@
-var utilities = require('../utilities.min.js');
+var utilities = require('../utilities.js');
 
-describe("utilities.inherits", function() {
-
-    // test example fron README.md
+describe('utilities.inherits', function() {
+    // test example from README.md
     var SuperClass = function() {
         this.someProperty = 42;
     };
@@ -10,7 +9,7 @@ describe("utilities.inherits", function() {
     SuperClass.prototype.retMsg = function(msg) {
         return msg;
     };
-    
+
     SuperClass.prototype.getSomeProp = function() {
         return this.someProperty;
     };
