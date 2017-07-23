@@ -1,4 +1,4 @@
-# utilities v0.5.0
+# utilities v0.6.0
 
 > Utility functions for front-end JavaScript development.
 
@@ -81,22 +81,22 @@ console.log(statesObject);
 
 var news = [
     {
-        id: 12001
+        id: 12001,
         headline: 'Tiger goes limp',
         subHeadline: 'Pulls out after 9 holes'
     },{
-        id: 666
+        id: 666,
         headline: 'Croc has beef with cow',
         subHeadline: ''
     },{
-        id: 1337
+        id: 1337,
         headline: 'Germans wurst at penalties',
         subHeadline: 'New stats prove England are better from the spot'
     }
 ];
 var newsObject = utilities.toObject(news, 'id');
 
-console.log(statesObject);
+console.log(newsObject);
 
 // results in:
 // {
