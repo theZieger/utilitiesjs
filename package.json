@@ -6,6 +6,13 @@
   "scripts": {
     "test": "jasmine"
   },
+  "nyc": {
+    "exclude": [
+      "spec/**/*.js"
+    ],
+    "reporter": "clover",
+    "report-dir": "coverage"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/theZieger/utilitiesjs.git"
