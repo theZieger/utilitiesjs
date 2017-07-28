@@ -4,8 +4,10 @@
  * https://github.com/theZieger/utilitiesjs/blob/master/LICENSE
  */
 (function(root, factory) {
+    /** global: define */
     if (typeof define === "function" && define.amd) {
         define(["utilities"], factory);
+    /** global: module */
     } else if (typeof module === "object" && module.exports) {
         module.exports = factory();
     } else {
