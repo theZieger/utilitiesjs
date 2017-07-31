@@ -65,7 +65,7 @@
     var toObject = function(arr, mapBy) {
         var obj = {};
 
-        if (typeof mapBy !== 'string' && mapBy != null) {
+        if (mapBy !== undefined && typeof mapBy !== 'string') {
             throw new TypeError('mapBy argument is not of type String');
         }
       
