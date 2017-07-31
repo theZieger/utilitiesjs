@@ -1,4 +1,4 @@
-# utilities v0.7.0 [![Build Status](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) 
+# utilities v0.8.0 [![Build Status](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) 
 
 > Utility functions for front-end JavaScript development.
 
