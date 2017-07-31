@@ -64,12 +64,12 @@
      */
     var toObject = function(arr, mapBy) {
         var obj = {};
-
+      
         if (!Array.isArray(arr)) {
             throw new TypeError('arr argument is not of type Array');
         }
 
-        if (typeof mapBy !== 'string' && mapBy != null) {
+        if (mapBy !== undefined && typeof mapBy !== 'string') {
             throw new TypeError('mapBy argument is not of type String');
         }
 
