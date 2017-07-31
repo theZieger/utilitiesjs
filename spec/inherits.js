@@ -2,12 +2,6 @@ var utilities = require('../utilities.js');
 
 describe('utilities.inherits', function() {
     describe('failing tests', function() {
-        // test example from README.md
-        var SuperClass = {};
-
-        // a class we want to inherit from SuperClass
-        var SomeClass = function() {};
-
         it("should fail because the Constructor is undefined", function() {
             expect(utilities.inherits.bind()).toThrowError(TypeError);
         });
@@ -17,17 +11,18 @@ describe('utilities.inherits', function() {
         });
 
         it("should fail because the SuperConstructor is undefined", function() {
-            expect(utilities.inherits.bind(null, SomeClass)).toThrowError(TypeError);
+            expect(utilities.inherits.bind(null, function() {})).toThrowError(TypeError);
         });
 
         it("should fail because the SuperConstructor is null", function() {
-            expect(utilities.inherits.bind(null, SomeClass, null)).toThrowError(TypeError);
+            expect(utilities.inherits.bind(null, function() {}, null)).toThrowError(TypeError);
         });
 
         it("should fail because the SuperConstructor has no prototype", function() {
-            expect(utilities.inherits.bind(null, SomeClass, [])).toThrowError(TypeError);
+            expect(utilities.inherits.bind(null, function() {}, [])).toThrowError(TypeError);
         });
     });
+    
     describe('successful tests', function() {
         // test example from README.md
         var SuperClass = function() {
