@@ -1,6 +1,20 @@
 var utilities = require('../utilities.js');
 
 describe('utilities.toObject', function() {
+    describe('failing tests', function() {
+        it("should fail because the arr parameter is undefined", function() {
+            expect(utilities.toObject).toThrowError(TypeError);
+        });
+
+        it("should fail because the arr parameter is not an Array", function() {
+            expect(utilities.toObject.bind(null, {})).toThrowError(TypeError);
+        });
+
+        it("should fail because the mapBy not of type String and not falsy", function() {
+            expect(utilities.toObject.bind(null, [], {})).toThrowError(TypeError);
+        });
+    });
+
     describe('array of primitives toObject', function() {
         // test example from README.md
         var states = ['Sachsen', 'Sachsen-Anhalt', 'Berlin', 'Hamburg'];
