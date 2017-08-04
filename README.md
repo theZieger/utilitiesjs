@@ -8,7 +8,7 @@ There is more than one way to use utilities.js inside your project. I prefer usi
 
 If you haven't used [npm](http://npmjs.com/) (Node Package manager) before, be sure to check out the [Getting Started](https://docs.npmjs.com/getting-started/what-is-npm) guide, as it explains how to install and use npm. Once you're familiar with that process, you may install the utilities.js module with this command inside your project:
 
-```
+```bash
 npm install utilitiesjs --save-dev
 ```
 
@@ -24,7 +24,7 @@ It does not make use of Object.setPrototype since it's usage is to be avoided fo
 
 Anyway. Here is a code example how to use the `utilities.inherits` function:
 
-```
+```javascript
 // make sure utilities.js is already available when this code runs
 
 // a super class
@@ -64,7 +64,7 @@ A lot faster and way more performant. That's the story how this function landed 
 
 Anyway. Here is a code example how to use the `utilities.toObject` function:
 
-```
+```javascript
 // make sure utilities.js is already available when this code runs
 
 var states = ['Sachsen', 'Sachsen-Anhalt', 'Berlin', 'Hamburg'];
