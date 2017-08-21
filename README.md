@@ -1,4 +1,4 @@
-# utilities v0.8.1 [![Build Status](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) 
+# utilities v0.8.1 [![Build Status](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master)
 
 > Utility functions for front-end JavaScript development.
 
@@ -57,6 +57,13 @@ Turns an array of values into a object.
 
 The `mapBy` argument is therefore totally optional.
 
+`mapBy` can be a simple string (referring to an property name of the objects inside `arr`), an array of strings (referring to an property name of the objects inside `arr`) or an function returning a property name which is used to store the reference to the original object of `arr` in the returned object.
+
+When mapBy is a function it will take three arguments:
+1. `val` - the current object which is processed
+1. `i` - the index of the current object which is processed
+1. `arr` - the array given to toObject as first parameter
+
 This function was created because I, as a front-end developer, have to handle a lot of data from API responses. And when I say a lot, I mean a lot.
 Sometimes more than 2000 objects inside an array with countless attributes hit our clients and I have to enrich them with even more data from different API requests.
 You can imagine looping over those 2000 objects can be tough for the clients device. So I map these array of objects to an associative object which can be accessed a lot faster by simply doing a member access by the ID.
@@ -94,15 +101,33 @@ var news = [
         subHeadline: 'New stats prove England are better from the spot'
     }
 ];
-var newsObject = utilities.toObject(news, 'id');
 
-console.log(newsObject);
+var newsObject1 = utilities.toObject(news, 'id');
+var newsObject2 = utilities.toObject(news, ['id', 'id']);
+var newsObject3 = utilities.toObject(news, function(val, i) {
+    return val.id + '_' + i;
+});
 
+console.log(newsObject1);
 // results in:
 // {
-//     12001: { id: 12001, headline: 'Tiger goes limp', subHeadline: 'Pulls out after 9 holes' },
-//     666: { id: 666, headline: 'Croc has beef with cow', subHeadline: '' },
-//     1337: { id: 1337, headline: 'Germans wurst at penalties', subHeadline: 'New stats prove England are better from the spot' }
+//     '12001': { id: 12001, headline: 'Tiger goes limp', subHeadline: 'Pulls out after 9 holes' },
+//     '666': { id: 666, headline: 'Croc has beef with cow', subHeadline: '' },
+//     '1337': { id: 1337, headline: 'Germans wurst at penalties', subHeadline: 'New stats prove England are better from the spot' }
+
+console.log(newsObject2);
+// results in:
+// {
+//     '12001_12001': { id: 12001, headline: 'Tiger goes limp', subHeadline: 'Pulls out after 9 holes' },
+//     '666_666': { id: 666, headline: 'Croc has beef with cow', subHeadline: '' },
+//     '1337_1337': { id: 1337, headline: 'Germans wurst at penalties', subHeadline: 'New stats prove England are better from the spot' }
+
+console.log(newsObject3);
+// results in:
+// {
+//     '12001_0': { id: 12001, headline: 'Tiger goes limp', subHeadline: 'Pulls out after 9 holes' },
+//     '666_1': { id: 666, headline: 'Croc has beef with cow', subHeadline: '' },
+//     '1337_2': { id: 1337, headline: 'Germans wurst at penalties', subHeadline: 'New stats prove England are better from the spot' }
 // }
 
 ```
