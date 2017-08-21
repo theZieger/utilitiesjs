@@ -71,7 +71,7 @@ describe('utilities.toObject', function() {
     });
 
     describe('array of objects toObject - function mapBy', function() {
-        var newsObject = utilities.toObject(news, function(val, i, arr) {
+        var newsObject = utilities.toObject(news, function(val, i) {
             return val.id + '_' + i;
         });
 

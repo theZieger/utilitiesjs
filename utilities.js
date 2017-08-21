@@ -95,7 +95,7 @@
             string: function(val) {
                 this.undefined(val, val[mapBy]);
             },
-            object: function(val, i) {
+            object: function(val) {
                 var newKey = mapBy.map(function(propertyName){
                     return val[propertyName];
                 }).join('_');
