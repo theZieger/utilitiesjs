@@ -1,4 +1,4 @@
-# utilities v0.9.0 [![Build Status](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) ![Downloads over NPM per month](https://img.shields.io/npm/dm/utilitiesjs.svg?maxAge=7200&colorB=cb3837)
+# utilities v1.0.0 [![Build Status](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/build.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/build-status/master) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/theZieger/utilitiesjs/?branch=master) ![Downloads over NPM per month](https://img.shields.io/npm/dm/utilitiesjs.svg?maxAge=7200&colorB=cb3837)
 
 > Utility functions for front-end JavaScript development.
 
@@ -29,26 +29,25 @@ Anyway. Here is a code example how to use the `utilities.inherits` function:
 
 // a super class
 var SuperClass = function() {
-    this.someProperty = 42;
-}
+  this.someProperty = 42;
+};
 
 SuperClass.prototype.justDoIt = function(msg) {
-    alert(msg);
-}
+  alert(msg);
+};
 
 // a class we want to inherit from SuperClass
 var DoTheFlop = function() {
-    // this makes sure to also inherit the properties of SuperClass defined inside it's constructor function
-    // which may be crucial for it's methods to run
-    SuperClass.call(this);
-}
+  // this makes sure to also inherit the properties of SuperClass defined inside it's constructor function
+  // which may be crucial for it's methods to run
+  SuperClass.call(this);
+};
 
 utilities.inherits(DoTheFlop, SuperClass);
 
 DoTheFlop.prototype.flop = function() {
-    this.justDoIt('Everybody do the flop!');
-}
-
+  this.justDoIt('Everybody do the flop!');
+};
 ```
 
 ### utilities.toObject(arr, mapBy)
@@ -60,6 +59,7 @@ The `mapBy` argument is therefore totally optional.
 `mapBy` can be a simple string (referring to an property name of the objects inside `arr`), an array of strings (referring to an property name of the objects inside `arr`) or an function returning a property name which is used to store the reference to the original object of `arr` in the returned object.
 
 When mapBy is a function it will take three arguments:
+
 1. `val` - the current object which is processed
 1. `i` - the index of the current object which is processed
 1. `arr` - the array given to toObject as first parameter
@@ -82,30 +82,31 @@ console.log(statesObject);
 // results in a not very impressive object with key names representing the array indexes:
 // {0: 'Sachsen', 1: 'Sachsen-Anhalt', 2: 'Berlin', 3: 'Hamburg'}
 
-
 // maybe a way better example
 // with some of the punniest headlines ever
 
 var news = [
-    {
-        id: 12001,
-        headline: 'Tiger goes limp',
-        subHeadline: 'Pulls out after 9 holes'
-    },{
-        id: 666,
-        headline: 'Croc has beef with cow',
-        subHeadline: ''
-    },{
-        id: 1337,
-        headline: 'Germans wurst at penalties',
-        subHeadline: 'New stats prove England are better from the spot'
-    }
+  {
+    id: 12001,
+    headline: 'Tiger goes limp',
+    subHeadline: 'Pulls out after 9 holes'
+  },
+  {
+    id: 666,
+    headline: 'Croc has beef with cow',
+    subHeadline: ''
+  },
+  {
+    id: 1337,
+    headline: 'Germans wurst at penalties',
+    subHeadline: 'New stats prove England are better from the spot'
+  }
 ];
 
 var newsObject1 = utilities.toObject(news, 'id');
 var newsObject2 = utilities.toObject(news, ['id', 'id']);
 var newsObject3 = utilities.toObject(news, function(val, i) {
-    return val.id + '_' + i;
+  return val.id + '_' + i;
 });
 
 console.log(newsObject1);
@@ -129,5 +130,4 @@ console.log(newsObject3);
 //     '666_1': { id: 666, headline: 'Croc has beef with cow', subHeadline: '' },
 //     '1337_2': { id: 1337, headline: 'Germans wurst at penalties', subHeadline: 'New stats prove England are better from the spot' }
 // }
-
 ```
