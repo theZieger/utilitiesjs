@@ -19,3 +19,4 @@ filter:
     - 'utilities.es.js'
     - 'utilities.js'
     - 'toES6Module.js'
+    - 'injectBanner.js'
