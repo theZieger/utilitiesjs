@@ -1,0 +1,22 @@
+checks:
+  javascript: true
+build:
+  nodes:
+    analysis:
+      tests:
+        override:
+          - js-scrutinizer-run
+  dependencies:
+    before:
+      - npm install nyc
+  tests:
+    override:
+      - node_modules/nyc/bin/nyc.js npm test
+
+filter:
+  excluded_paths:
+    - 'spec/'
+    - 'utilities.es.js'
+    - 'utilities.js'
+    - 'toES6Module.js'
+    - 'injectBanner.js'

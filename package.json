@@ -1,10 +1,15 @@
 {
   "name": "utilitiesjs",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Utility functions for front-end JavaScript development.",
   "main": "utilities.js",
+  "module": "utilities.es.js",
   "scripts": {
-    "test": "jasmine"
+    "test": "jasmine",
+    "banner": "node injectBanner.js",
+    "esmodule": "node toES6Module.js",
+    "build": "npm test && node_modules/umd/bin/cli.js utilities src/utilities.js utilities.js -c && npm run esmodule && npm run banner",
+    "precommit": "pretty-quick --staged"
   },
   "nyc": {
     "exclude": [
@@ -17,6 +22,23 @@
     "type": "git",
     "url": "git+https://github.com/theZieger/utilitiesjs.git"
   },
+  "keywords": [
+    "utility",
+    "inherit",
+    "toArray",
+    "client",
+    "browser",
+    "umd",
+    "module",
+    "es6"
+  ],
+  "contributors": [
+    "Daniel Opitz <contact@copynpaste.de> (https://copynpaste.de/)"
+  ],
+  "files": [
+    "utilities.js",
+    "utilities.es.js"
+  ],
   "author": "thezieger",
   "license": "MIT",
   "bugs": {
@@ -24,6 +46,10 @@
   },
   "homepage": "https://github.com/theZieger/utilitiesjs#readme",
   "devDependencies": {
-    "jasmine": "^2.6.0"
+    "jasmine": "^3.2.0",
+    "umd": "^3.0.3",
+    "husky": "^1.0.0",
+    "prettier": "^1.14.3",
+    "pretty-quick": "^1.7.0"
   }
 }
