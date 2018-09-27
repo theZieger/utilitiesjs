@@ -89,4 +89,14 @@ describe('utilities.toObject', function() {
       expect(Object.keys(newsObject).length).toEqual(3);
     });
   });
+
+  describe('array of objects toObject - function provides neither string or number as new index', function() {
+    var newsObject = utilities.toObject(news, function(val, i) {
+      return [i];
+    });
+
+    it('should have 0 keys', function() {
+      expect(Object.keys(newsObject).length).toEqual(0);
+    });
+  });
 });
