@@ -1,3 +1,8 @@
+/*!
+ * utilitiesjs | v1.0.0 | Utility functions for front-end JavaScript development.
+ * Copyright (c) 2018 Eric Zieger (MIT license)
+ */
+
 (function(f) {
   if (typeof exports === 'object' && typeof module !== 'undefined') {
     module.exports = f();
@@ -19,12 +24,6 @@
 })(function() {
   var define, module, exports;
   module = { exports: (exports = {}) };
-  /*!
- * utilities.js | v1.0.0 | Utility functions for front-end JavaScript development
- * Copyright (c) 2017 Eric Zieger (MIT license)
- * https://github.com/theZieger/utilitiesjs/blob/master/LICENSE
- */
-
   var utilities = {};
 
   /**

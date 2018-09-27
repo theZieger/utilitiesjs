@@ -1,9 +1,3 @@
-/*!
- * utilities.js | v1.0.0 | Utility functions for front-end JavaScript development
- * Copyright (c) 2017 Eric Zieger (MIT license)
- * https://github.com/theZieger/utilitiesjs/blob/master/LICENSE
- */
-
 var utilities = {};
 
 /**

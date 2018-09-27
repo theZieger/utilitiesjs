@@ -6,8 +6,9 @@
   "module": "utilities.es.js",
   "scripts": {
     "test": "jasmine",
+    "banner": "node injectBanner.js",
     "esmodule": "node toES6Module.js",
-    "build": "npm test && node_modules/umd/bin/cli.js utilities src/utilities.js utilities.js -c && npm run esmodule",
+    "build": "npm test && node_modules/umd/bin/cli.js utilities src/utilities.js utilities.js -c && npm run esmodule && npm run banner",
     "precommit": "pretty-quick --staged"
   },
   "nyc": {
