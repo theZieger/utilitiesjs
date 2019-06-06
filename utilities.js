@@ -1,6 +1,6 @@
 /*!
  * utilitiesjs | v1.0.0 | Utility functions for front-end JavaScript development.
- * Copyright (c) 2018 Eric Zieger (MIT license)
+ * Copyright (c) 2019 Eric Zieger (MIT license)
  */
 
 (function(f) {
